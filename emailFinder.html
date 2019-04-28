@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="HackedSelf" content="HackedSelf">
+
+	<title>Hacked Self - email Finder </title>
+
+	<!-- external CSS link -->
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/emailStyle.css">
+	<link href="https://fonts.googleapis.com/css?family=Merriweather:700,700i|Oswald:700|Source+Sans+Pro:400,700"
+		rel="stylesheet">
+</head>
+
+<body>
+	<header>
+		<div  class="wrapper"id="headerDiv">
+			<h1> hackedSelf</h1>
+			<!-- <button> Sign In / Register </button> -->
+		</div>
+		<nav  class="wrapper">
+			<div id="headerNav">
+				<a href="index.html"> Spanish </a>
+				<a href="emailFinder.html"> emailFinder </a>
+				<!-- <a href="#"> Daily$Counter </a>
+				<a href="#"> Blog </a> -->
+			</div>
+			<!-- <div id="headerSearch">
+				<button id="searchButton" type="submit"> Search </button>
+			</div> -->
+		</nav>
+	</header>
+	<main class="wrapper">
+		<h2> Email Finder </h2>
+		<h4> 1) Enter in peron's name and company name <br> 2) Click submit</h4>
+		<br>
+		<form>
+			<input type="text" class="emailInputs" id="fName" placeholder="First Name">
+			<input type="text" class="emailInputs" id="lName" placeholder="Last Name">
+			<input type="text" id="cName" class="emailInputs" placeholder="CompanyName.com">
+			<input type="text" id="eType" class="emailInputs" placeholder="Enter ';' for outlook or ',' for gmail">
+			<br>
+			<input type="submit" value="Submit" class="greenButton round">
+		</form>
+		<h4> 3) Copy paste 'to:' field into email you want to send <br> 4) Copy paste 9 email addresses from 'bcc:' field into your email <br> 5) Send email! <br> 6) You will get 9 bounce backs; The 10th email address is the correct one! <br> </h4>
+		<div class="emailOutputs">
+			<h4> To:</h4>
+			<span id="toOutput"> john.doe@hackedself.com</span>
+		</div>
+		<div class="emailOutputs">
+			<h4 id='bccTo'> BCC:</h4>
+			<span id='bccSpan'> jdoe@hackedself.com </span>
+		</div>
+		<h4> Note that the receiver of the email typically will not notice that you used this tool because they will just receive one email from you (the other 9 bounce back) and will only see the one email address that is in the 'to:'.</h4>
+
+	</main>
+	<footer class="wrapper">
+		<nav>
+			<a id="a3" href="https://www.facebook.com/"> <img src="images/facebook.png" alt="facebook"> </a>
+			<a id="a3" href="https://www.twitter.com/"> <img src="images/twitter.png" alt="twitter"> </a>
+		</nav>
+		<h6> HackedSelf LLC (C) 2019 </h6>
+	</footer>
+
+	<!-- JS links -->
+	<!--<script src='http://code.jquery.com/jquery-latest.min.js'></script>-->
+	<script src="js/jquery.js"></script>
+	<script src="js/index.js"></script>
+	<script src="js/emailFinder.js"></script>
+
+</body>
+
+</html>
