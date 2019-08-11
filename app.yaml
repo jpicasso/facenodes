@@ -1,0 +1,9 @@
+runtime: go112
+
+env_variables:
+  CLOUD_SQL_USER: postgres
+  CLOUD_SQL_PASSWORD: "@Chicken123"
+  CLOUD_SQL_DATABASE: facenodesdb
+
+beta_settings:
+  cloud_sql_instances: facenodes:us-central1:facenodesdb
