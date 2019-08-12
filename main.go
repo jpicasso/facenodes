@@ -10,10 +10,11 @@ import (
 )
 
 func main() {
-	// u := os.Getenv("CLOUD_SQL_USER")
-	// p := os.Getenv("CLOUD_SQL_PASSWORD")
+	user := os.Getenv("CLOUD_SQL_USER")
+	password := os.Getenv("CLOUD_SQL_PASSWORD")
+	host := os.Getenv("CLOUD_SQL_DATABASE_HOST")
 
-	connStr := fmt.Sprintf("dbname=facenodesdb sslmode=disable user=postgres password=abc port=5432")
+	connStr := fmt.Sprintf("dbname=facenodesdb sslmode=disable user=%s password=%s host=%s", user, password, host)
 	db, err := sql.Open("postgres", connStr)
 	if err != nil {
 		log.Fatal(err)
