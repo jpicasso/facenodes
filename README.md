@@ -12,6 +12,40 @@ go run main.go
 
 The static content is located in `/static`. 
 
+To access the database locally in the terminal, run:
+```
+psql facenodesdb
+```
+
+Or you can use [TablePlus](https://tableplus.com/).
+
+Once you are in database:
+
+To insert a group:
+```
+INSERT INTO groups (name) VALUES ('<group>');
+```
+
+To insert a user:
+```
+INSERT INTO users (first_name, last_name) VALUES ('<first name>', '<last name>');
+```
+
+To connect a user to a group:
+```
+INSERT INTO user_groups (user_id, group_id) VALUES ('<user_id>', '<group_id>');
+```
+
+To see all groups:
+```
+SELECT * FROM groups;
+```
+
+To see a specific group groups:
+```
+SELECT * FROM groups WHERE name='<name>';
+```
+
 ## Deployment
 This service is hosted on http://facenodes.appspot.com using [App Engine Go1.12](https://cloud.google.com/appengine/docs/standard/go112/). To deploy run:
 
