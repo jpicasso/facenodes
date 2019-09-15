@@ -2,13 +2,15 @@
 
 Facenodes is a service consisting of a:
 - Postgres database
-- Go server
+- Go server (connects to the database, accepts HTTP requests, serves static files)
 
 It can be run locally with:
 
 ```
 go run main.go
 ```
+
+The static content is located in `/static`. 
 
 ## Deployment
 This service is hosted on http://facenodes.appspot.com using [App Engine Go1.12](https://cloud.google.com/appengine/docs/standard/go112/). To deploy run:
@@ -17,16 +19,48 @@ This service is hosted on http://facenodes.appspot.com using [App Engine Go1.12]
 gcloud app deploy app.yaml
 ```
 
+To look at the logs, run:
+
+```
+gcloud app logs tail -s default
+```
+
 ## Migrations
 Migrations are managed using [golang-migrate/migrate](https://github.com/golang-migrate/migrate). To create a new migration, run:
 ```
 migrate create -ext sql -dir migrations -seq <filename>
 ```
 
+The schema files are in `/migrations`. To migrate the schema to the latest file in `/migrations`, run:
+```
+migrate -source file:migrations -database postgres://localhost:5432/facenodesdb?sslmode=disable up
+```
+
 Instructions for running migrations are at:
 - https://github.com/golang-migrate/migrate#cli-usage
 - https://github.com/golang-migrate/migrate/tree/master/cmd/migrate
 - https://github.com/golang-migrate/migrate/blob/master/MIGRATIONS.md
+
+## Cloud SQL
+The Postgres database is hosted in [Cloud SQL](https://console.cloud.google.com/sql/instances/facenodesdb/overview?project=facenodes). To connect to the Cloud SQL database, first run the cloud sql proxy:
+
+```
+cloud_sql_proxy -instances=facenodes:us-central1:facenodesd=tcp:5431
+```
+
+In a separate window, you can access the database with:
+
+```
+psql "postgres://<user>:<password>@<host>:<port>/<dbname>?sslmode=disable"
+
+// For example:
+psql "postgres://postgres:abc@localhost:5431/facenodesdb?sslmode=disable"
+```
+
+To migrate the Cloud SQL database: 
+```
+migrate -source file:migrations -database postgres://postgres@abc:localhost:5431/facenodesdb?sslmode=disable up
+```
 
 ## External Libraries
 At the moment, the Go server uses these libraries:
