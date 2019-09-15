@@ -28,7 +28,7 @@ Instructions for running migrations are at:
 - https://github.com/golang-migrate/migrate/tree/master/cmd/migrate
 - https://github.com/golang-migrate/migrate/blob/master/MIGRATIONS.md
 
-## External Libraries
+## External Libraries 
 At the moment, the Go server uses these libraries:
 - https://godoc.org/github.com/lib/pq
 
