@@ -1,0 +1,94 @@
+ /* The form container */
+ 
+#categories, #groups {
+  width:90%;
+}
+
+ .formSection {
+    display:flex;
+    align-items:center;
+    justify-content: center;
+}
+
+.formSection {
+  font-size: 2.5rem;
+}
+
+.CheckBoxContainer {
+    text-align: left;
+    display: block;
+    width: 75%;
+    position: relative;
+    padding-left: 4rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    font-size: 2.5rem;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+ 
+ /* Hide the browser's default checkbox */
+.CheckBoxContainer input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+  /* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 1.5em;
+    width: 1.5em;
+    background-color: #eee;
+    margin-top:0.2em;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .CheckBoxContainer:hover input ~ .checkmark {
+    background-color: #ccc;
+  } 
+  
+  /* When the checkbox is checked, add a blue background */
+  .CheckBoxContainer input:checked ~ .checkmark {
+    background-color: #2196F3;
+  }
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the checkmark when checked */
+  .CheckBoxContainer input:checked ~ .checkmark:after {
+    display: block;
+  }
+
+  /* Style the checkmark/indicator */
+.CheckBoxContainer .checkmark:after {
+    left: 1.25rem;
+    top: 0.5rem;
+    width: 1rem;
+    height: 2rem;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    
+  }
+
+  /* Laptop layout */
+@media screen and (min-width: 1200px){
+  .CheckBoxContainer {
+    display: inline;
+    width: 25%;
+  }
+}

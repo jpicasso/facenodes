@@ -1,88 +1,16 @@
-/*******************Main Style Sheet for Hacked Self******/
-
-
-/*********************************************************/
-/*  Mobile First Design - Mobile Screens
-/*********************************************************/
-
-/*********************************************************/
-/*  HEADER
-/*********************************************************/
-
-*{
-    margin: 0;
-    padding:0;
-    box-sizing: border-box;
-    font-family: "calibri";
-    font-size:14px;
-    
-}
+/* ------------------------Last Updated 2019.09.07-----------------------------*/
+/*------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------*/ 
 
 .wrapper {
-    padding: 5px 20px 5px  20px;
-}
-
-#headerDiv {
-    background: rgba(0,102,255,1);
-    color:white;
-    display:flex;
-    justify-content: space-between;
-    align-items:flex-end;
-}
-
-
-header h1 {
-    width: 30%;
-    font-size: 30px;
-    float: left;
-}
-
-header button {
-width: 20%;
-height: 20px;
-}
-
-header nav {
-    background: rgb(220, 230, 242);
-    color:white;
-    display:flex;
-    justify-content: flex-start;
-}
-header nav a {
-    padding: 0 20px 0 0;
-}
-
-header nav a:link {
-    color: rgb(31, 73, 125);
-    font-weight: bolder;
-    text-decoration:none;
-}
-header nav a:visited {
-    color: rgb(31, 73, 125);
-}
-
-#headerNav {
-    width: 80%;
-}
-#searchButton {
-    width: 200px;
-}
-
-
-/*********************************************************/
-/*  MAIN BODY
-/*********************************************************/
-
-main {
-    padding: 10px 200px 0 200px;
-    text-align: center;
-
+    padding: 0.5em 2em;
 }
 
 h2{
     color: rgb(31, 73, 125);
     font-weight: bolder;
-    text-align:left;
+    text-align:center;
 }
 h3 {
     text-align: right;
@@ -90,24 +18,138 @@ h3 {
     font-style: italic;
 }
 
-h4 {
-    text-align: left;
-    font-weight: 300;
+.textWindow {
+    margin: 1em;
+    height: 10em;
+    border: 0.25em solid black;
+    border-radius: 1em;
+}
+
+#FaceBox {
+height: 20em;
+}
+
+.faceBox {
+    height: 20em;
+    margin: 1em;
+    border: 0.25em solid black;
+    border-radius: 1em;
+}
+
+.faceBox p {
+    font-size: 2.5em;
+    text-align: center;
+}
+
+.faceBox h3 {
+    text-align: center;
+}
+
+.textWindow p {
+    font-size: 2.5em;
+    text-align: center;
+}
+
+.textWindow h3 {
+    text-align: center;
+}
+
+.ctrWrapper {
+    text-align: center;
+}
+
+.greenButton {
+    text-decoration: none;
+    display: inline-block;
+    width: 5em;
+    height: 5em;
+    font-size: 2em;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 0 10px 0;
+    margin: 5px;
+    border-radius: 50%;  
+}
+
+.greenButton:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+#checkSection {
+    display:none;
+}
+
+#wrong {
+    background-image: url(../images/xMark.png);
+    background-repeat: no-repeat; 
+    background-size:100%;
+    width:12em;
+    height:10.5em;
+    border:none;
+}
+
+#correct {
+    background-image: url(../images/checkMark.png);
+    background-repeat: no-repeat;
+    background-size:100%;
+    width:12em;
+    height:10.5em;
+    border:none;
+}
+
+.btn-edit {
+    background-image: url(../images/editIcon.png);
+    background-repeat: no-repeat;
+    background-size:100%;
+    height:1.5em;
+    width:1.5em;
+    border:none;
+    margin:0.5em;
+}
+
+.faceBox .btn-edit {
+    float:right;
+}
+
+.btn-delete {
+    background-image: url(../images/deleteIcon.png);
+    background-repeat: no-repeat;
+    background-size:100%;
+    height:1.75em;
+    width:1.5em;
+    border:none;
+}
+
+#btn-faceBox-deletePerson {
+    float:left;
+}
+
+.btn-add {
+    background-image: url(../images/addIcon.png);
+    background-repeat: no-repeat;
+    background-size:100%;
+    height:2em;
+    width:2em;
+    border:none;
 }
 
 #spanishButtonArea {
-    margin: 20px 0 0 0;
+    margin: 1em 0 0 0;
+    height:11em;
+    
 }
 .basicButton {
-    text-align:center;
-    margin: 5px 0 5px 0;
-    border: 2px solid rgba(56, 93, 138, 1);
-    border-radius: 10px;
-    padding: 5px;
+    font-size:1em;
+    display:block;
+    margin: 1em auto;
+    border: 0.05em solid rgba(56, 93, 138, 1);
+    border-radius: 1em;
+    padding: 0.5em;
     color:white;
     background-color: rgba(0,102,255,1);
-    width:50%;
-    height:30px;
+    width:15em;
+    height:3em;
     box-shadow: #111 0 0 1px; 
 }
 
@@ -123,148 +165,26 @@ h4 {
     font-weight: bolder;
   }
 
-#spanishBox {
-    margin:0 20px 0 20px;
-    height: 150px;
-    border: 5px solid black;
-    border-radius: 15px;
-    display:flex;
-    align-items:center;
-    justify-content: center;
+.internalLink {
+    font-size:1em;
+    display:block;
+    text-align: center;
+    margin: 1em auto;
+    border: 0.05em solid rgba(56, 93, 138, 1);
+    border-radius: 1em;
+    padding: 0.5em;
+    color:white;
+    background-color: rgba(0,102,255,1);
+    width:15em;
+    height:3em;
+    box-shadow: #111 0 0 1px;    
 }
 
-h5 {
-    font-size: 40px;
-}
-
-.round {
-    border-radius: 50%;
-}
-
-.greenButton {
-    text-decoration: none;
-    display: inline-block;
-    width: 110px;
-    height: 110px;
-    font-size: 20px;
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 0 10px 0;
-    margin: 5px;
-    
-}
-
-.greenButton:hover {
+.internalLink:hover {
     background-color: #ddd;
-    color: black;
-    
+    color: black;    
 }
 
-#checkSection {
-    height: 120px;
-    display:none;
-}
-
-#wrong {
-    background-image: url(../images/xMark.png);
-    background-repeat: no-repeat; 
-    background-size:100%;
-    width:120px;
-    height:100%;
-    border:none;
-}
-
-#correct {
-    background-image: url(../images/checkMark.png);
-    background-repeat: no-repeat;
-    background-size:100%;
-    width:120px;
-    height:100%;
-    border:none;
-}
-
-/* The form container */
-.formSection {
-    display:flex;
-    align-items:center;
-    justify-content: center;
-}
-
-.container {
-    text-align: left;
-    display: inline;
-    width: 25%;
-    position: relative;
-    padding-left: 35px;
-    margin-bottom: 12px;
-    cursor: pointer;
-    font-size: 22px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
-  
-  /* Hide the browser's default checkbox */
-  .container input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-  }
-  
-  /* Create a custom checkbox */
-  .checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 25px;
-    width: 25px;
-    background-color: #eee;
-  }
-  
-  /* On mouse-over, add a grey background color */
-  .container:hover input ~ .checkmark {
-    background-color: #ccc;
-  }
-  
-  /* When the checkbox is checked, add a blue background */
-  .container input:checked ~ .checkmark {
-    background-color: #2196F3;
-  }
-  
-  /* Create the checkmark/indicator (hidden when not checked) */
-  .checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
-  }
-  
-  /* Show the checkmark when checked */
-  .container input:checked ~ .checkmark:after {
-    display: block;
-  }
-  
-  /* Style the checkmark/indicator */
-  .container .checkmark:after {
-    left: 9px;
-    top: 5px;
-    width: 5px;
-    height: 10px;
-    border: solid white;
-    border-width: 0 3px 3px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-  }
-
-
-
-
-/*********************************************************/
-/*  FOOTER
-/*********************************************************/
 
 footer {
     text-align: center;
@@ -277,42 +197,92 @@ footer nav a {
     padding: 20px;
 }
 
-/*********************************************************/
-/*  Size For Bigger Screen
-/*********************************************************/
-
-
-/* small tablets */
-@Media screen and (min-width:480px) {
-    
+table {
+    width: 100%;
+    padding:5px;
+    margin:5px;
 }
 
-/* large tablets */
-@Media screen and (min-width:768px){
-    .wrapper {
-        padding: 10px 100px 10px  100px;
-    }
-    #spanishBox {
-        margin:0 20px 0 20px;
-    }
-    
+th {
+    background-color:rgba(0,102,255,1);
+    color: white;
+    text-align: left;
+    padding: 10px;
 }
 
-/*very big tablets*/
-
-@Media screen and (min-width:980px) {
-    .wrapper {
-        padding: 10px 200px 10px  200px;
-    }
-    #spanishBox {
-        margin:0 50px 0 50px;
-    }
+tr {
+    border-bottom: 0.05em solid rgba(56, 93, 138, 1);
+    padding:5px;
 }
-    
-/* laptops and desktops */
-@Media screen and (min-width:1080px) {
-    .wrapper {
-    
+
+td {
+    padding:5px;
+}
+
+.tableAddRow {
+    font-style: italic;
+    color: rgba(56, 93, 138, 1);
+}
+
+tr:hover {
+    background: rgba(0,102,255,.31);
+}
+
+/* grid system */
+
+.span1 {
+    width:8.3333%;
+}
+.span2 {
+    width: 16.666667%
+}
+
+.span3 {
+    width:25%;
+}
+
+.span4 {
+    width:33.333333%;
+}
+
+.span6 {
+    width: 50%;
+}
+
+.span8 {
+    width: 66.6666667%;
+}
+
+.span10 {
+    width: 83.333333%;
+}
+
+.span12 {
+    width:100%;
+}
+
+
+
+
+/* Laptop layout */
+@media screen and (min-width: 1200px){
+	#FaceBox {
+        width: 20em;
+        margin:auto;
     }
-    
+        
+    .faceBox {
+        width: 20em;
+        margin:auto;
+    }
+
+    #viewGroups {
+        width:30em;
+        margin:auto;
+    }
+    table {
+        width:30em;
+        margin:auto;
+    }
+
 }

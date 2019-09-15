@@ -1,0 +1,130 @@
+.emailInputs {
+  color: #6b6b6c;
+  font-size: 1em;
+  background: #fff;
+  border: 0.1em solid #111;
+  padding: 0 1em;
+  display: block;
+  width: 80%;
+  margin: 0.5em auto;
+  font-family: helvetica, arial, sans-serif;
+  height: 2em;
+  vertical-align: middle;
+  box-shadow: #111 0 0 0.5em;
+}
+
+.emailOutputs {
+  display:flex;
+  width: 80%;
+  margin:auto;
+}
+
+.emailOutputs h4 {
+  padding: 0.5em;
+  width:10%;
+  text-align: right;
+  margin: 0 0.25em;
+  
+}
+
+.emailOutputs span {
+  color: #6b6b6c;
+  text-align: left;
+  font-size: 1em;
+  background: #fff;
+  border: 0.1em solid #111;
+  padding: 0px 1em;
+  display: inline-block;
+  width: 40em;
+  margin: 0.5em 0;
+  font-family: helvetica, arial, sans-serif;
+  box-shadow: #111 0 0 0.5em;
+  height: 2em;
+}
+
+#bccSpan {
+  height:80px;
+}
+
+/* Laptop layout */
+@media screen and (min-width: 1200px){
+	
+  .emailInputs {
+    width:40em;
+  }
+
+}
+
+
+
+
+/* form {
+
+}
+.emailInputs {
+    color: #6b6b6c;
+    font-size: 14x;
+    background: #fff;
+    border: 1px solid #111;
+    padding: 0px 30px;
+    display: inline-block;
+    width: 400px;
+    margin: 10px;
+    font-family: helvetica, arial, sans-serif;
+    height: 32px;
+    line-height: 74px;
+    vertical-align: middle;
+    box-shadow: #111 0 0 10px;
+  }
+  
+  #submit-btn {
+    background:grey;
+    color: #000;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: 1px solid #111;
+    text-align: center;
+    display: inline-block;
+    width: 250px;
+    height: 72px;
+    line-height: 74px;
+    vertical-align: middle;
+    box-shadow: #111 0 0 50px;
+    font-family: helvetica, arial, sans-serif;
+    cursor: pointer;
+  }
+  #submit-btn:hover {
+    background: #fff600;
+  }
+
+  .emailOutputs {
+    display:flex;
+  }
+
+  .emailOutputs h4 {
+    width:80px;
+    padding: 20px 0 20px 0;
+    text-align: right;
+  }
+
+  .emailOutputs span {
+    color: #6b6b6c;
+    text-align: left;
+    font-size: 14x;
+    background: #fff;
+    border: 1px solid #111;
+    padding: 0px 30px;
+    display: inline-block;
+    width: 400px;
+    margin: 10px;
+    font-family: helvetica, arial, sans-serif;
+    box-shadow: #111 0 0 10px;
+    height: 32px;
+  }
+
+  #bccSpan {
+    height:80px;
+  }
+
+   */

@@ -1,18 +1,9 @@
 <!------------------------------------------------------------------------>
 <!------------------------------------------------------------------------>
-<!------------------------Version 2019.04.03----------------------------->
+<!------------------------Version 2019.08.18----------------------------->
 <!------------------------------------------------------------------------>
 <!------------------------------------------------------------------------>
 <!------------------------------------------------------------------------>
-
-<!------------------------------------------------------------------------>
-<!--To DO
-1) check mark background images - Need to resize them smaller to make them smaller
-2) 
-	
--->
-<!------------------------------------------------------------------------>
-
 
 
 <!DOCTYPE html>
@@ -20,122 +11,107 @@
 
 <head>
 	<meta charset="utf-8">
-	<meta name="HackedSelf" content="HackedSelf">
+	<meta name="GoThola" content="GoThola">
 
-	<title>Hacked Self Landing Page</title>
+	<title>Go Thola!</title>
 
 	<!-- external CSS link -->
+	<link rel="stylesheet" href="css/reset.css">
 	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/header.css">
+	<link rel="stylesheet" href="css/checkBox.css">
 	<link href="https://fonts.googleapis.com/css?family=Merriweather:700,700i|Oswald:700|Source+Sans+Pro:400,700"
 		rel="stylesheet">
 </head>
 
 <body>
-	<header>
-		<div class="wrapper" id="headerDiv">
-			<h1> hackedSelf</h1>
-			<!-- <button> Sign In / Register </button> -->
-		</div>
-		<nav>
-			<div class="wrapper" id="headerNav">
-				<a href="index.html"> Spanish </a>
-				<a href="emailFinder.html"> emailFinder </a>
-				<!-- <a href="#"> Daily$Counter </a>
-				<a href="#"> Blog </a> -->
+	
+		<header>
+			<div class="logoHeader">
+				<h1><a href="index.html">Go Thola</a></h1>
+				<ul> 
+					<li><a id="nav-toggle" href="#">&#9776;</a></li>
+				</ul>
 			</div>
-			<!-- <div id="headerSearch">
-				<button id="searchButton" type="submit"> Search </button>
-			</div> -->
-		</nav>
+			<nav class="navHeader">
+				<ul>
+					<li><a href="index.html"> Spanish </a></li>
+					<li><a href="emailFinder.html"> Email Finder </a></li>
+					<li><a href="FaceCards.html"> Face Cards </a></li>
+				</ul>
+			</nav>
 	</header>
 	<main class="wrapper">
 		<h2> Spanish Vocab Cards </h2>
 		<h3 id="scorecard"> # Correct: Not Started </h3>
-		<h3 id="wordsLoaded"> Your vocab card box has 0 words in it </h3>
-		<h3 id="dictionarySize"> Your dictionary has 600 words in it </h3>
+		<h3 id="wordsLoaded"> Box holds 0 words </h3>
 		
-		<div id='spanishButtonArea'>
+		<div id="spanishBox" class="textWindow">
+			<p id="spanishBoxText"> Select categories and press next!<p>
+		</div>
+		<div id='nextSection' class="ctrWrapper">
+			<button id="next" class="greenButton"> Next </button>
+		</div>
+		<div id="checkSection" class="ctrWrapper">
+			<button id="wrong"></button>
+			<button id="correct"> </button>
+		</div>
+		
+		<div id='spanishButtonArea' class="ctrWrapper">
 			<button class='basicButton' id='engToSpanish'>English to Spanish </button>
 			<select class='basicButton' id="btn-stackSize">
 				<option>Stack Size</option>
 			</select>
 			<button class='basicButton' id='nextStack'>Next Stack </button>
 		</div>
-		<div id="spanishBox">
-			<h5> Select categories and press next!</h5>
-		</div>
-		<div id="nextSection">
-			<button id="next" class="greenButton round"> Next </button>
-		</div>
-		<div id="checkSection">
-			<button id="wrong"></button>
-			<button id="correct"> </button>
-		</div>
 		<br>
 		
 		<div class="formSection">
 			<form id="categories">
-				<label class="container"> Getting Around
-					<input type="checkbox" name="categories" value="Getting Around">
+				<p> Leccion 1</p>
+				<hr>
+				<label class="CheckBoxContainer"> First 30 words
+					<input type="checkbox" name="categories" value="First 30 words">
 					<span class="checkmark"></span>
 				</label>
-				<label class="container">Numbers
-					<input type="checkbox" name="categories" value="Numbers">
+				<label class="CheckBoxContainer">Describing People
+					<input type="checkbox" name="categories" value="Describing People">
 					<span class="checkmark"></span>
 				</label>
-				<label class="container">Family
-					<input type="checkbox" name="categories" value="Family">
+				<label class="CheckBoxContainer">Activities
+					<input type="checkbox" name="categories" value="Activities">
 					<span class="checkmark"></span>
 				</label>
-				<label class="container">Dates/time
-					<input type="checkbox" name="categories" value="Dates/time">
+				<label class="CheckBoxContainer">Drinks
+					<input type="checkbox" name="categories" value="Drinks">
 					<span class="checkmark"></span>
 				</label>
-				<label class="container">Colors
-					<input type="checkbox" name="categories" value="Color">
+				<label class="CheckBoxContainer">More Basics
+					<input type="checkbox" name="categories" value="More Basics">
 					<span class="checkmark"></span>
 				</label>
-				<label class="container">Food
-					<input type="checkbox" name="categories" value="Food">
+				<br>
+				<br>
+				<p> Leccion 2</p>
+				<hr>
+				<label class="CheckBoxContainer">Fruits/Veggies
+					<input type="checkbox" name="categories" value="Fruits/Veggies">
 					<span class="checkmark"></span>
 				</label>
-				<label class="container">In a room
-					<input type="checkbox" name="categories" value="In a room">
+				<label class="CheckBoxContainer">Meat/Fish
+					<input type="checkbox" name="categories" value="Meat/Fish">
 					<span class="checkmark"></span>
 				</label>
-				<label class="container">Basics
-					<input type="checkbox" name="categories"value="Basics">
+				<label class="CheckBoxContainer">More food!
+					<input type="checkbox" name="categories" value="More food!">
 					<span class="checkmark"></span>
 				</label>
-				<label class="container">Verbs
-					<input type="checkbox" name="categories"value="Verbs">
-					<span class="checkmark"></span>
+				<label class="CheckBoxContainer">Food actions
+						<input type="checkbox" name="categories" value="Food actions">
+						<span class="checkmark"></span>
 				</label>
-				<label class="container">Activities
-					<input type="checkbox" name="categories"value="Activities">
-					<span class="checkmark"></span>
-				</label>
-				<label class="container">Getting to Know You
-					<input type="checkbox" name="categories"value="Getting to Know You">
-					<span class="checkmark"></span>
-				</label>
-				<label class="container">Work
-					<input type="checkbox" name="categories"value="Work">
-					<span class="checkmark"></span>
-				</label>
-				<label class="container">Small talk
-					<input type="checkbox" name="categories"value="Small talk">
-					<span class="checkmark"></span>
-				</label>
-				<label class="container">Feelings
-					<input type="checkbox" name="categories"value="Feelings">
-					<span class="checkmark"></span>
-				</label>
-				<label class="container">Outdoor nouns
-					<input type="checkbox" name="categories"value="Outdoor nouns">
-					<span class="checkmark"></span>
-				</label>
-
+				<br>
+				<br>
 			</form>
 		</div>
 	</main>
@@ -149,8 +125,10 @@
 
 	<!-- JS links -->
 	<!--<script src='http://code.jquery.com/jquery-latest.min.js'></script>-->
+
 	<script src="js/jquery.js"></script>
 	<script src="js/index.js"></script>
+	<script src="js/cssFunctions.js"></script>
 
 
 </body>
