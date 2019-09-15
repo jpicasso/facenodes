@@ -1,27 +1,33 @@
 package main
 
 import (
+	"database/sql"
 	"fmt"
+	_ "github.com/lib/pq"
+	"html/template"
 	"log"
 	"net/http"
 	"os"
-	"database/sql"
-	_ "github.com/lib/pq"
 )
 
 func main() {
-	user := os.Getenv("CLOUD_SQL_USER")
-	password := os.Getenv("CLOUD_SQL_PASSWORD")
-	host := os.Getenv("CLOUD_SQL_DATABASE_HOST")
+	// user := os.Getenv("CLOUD_SQL_USER")
+	// password := os.Getenv("CLOUD_SQL_PASSWORD")
+	// host := os.Getenv("CLOUD_SQL_DATABASE_HOST")
 
-	connStr := fmt.Sprintf("dbname=facenodesdb sslmode=disable user=%s password=%s host=%s", user, password, host)
-	db, err := sql.Open("postgres", connStr)
-	if err != nil {
-		log.Fatal(err)
-	}
+	/*
+		connStr := fmt.Sprintf("dbname=facenodesdb sslmode=disable")
+		db, err := sql.Open("postgres", connStr)
+		if err != nil {
+			log.Fatal(err)
+		}
+	*/
 
 	// http.HandleFunc("/edit", editHandler(db))
-	http.HandleFunc("/", indexHandler(db))
+
+	fs := http.StripPrefix("/static/", http.FileServer(http.Dir("static")))
+	http.Handle("/static/", fs)
+	http.HandleFunc("/", staticPageHandler())
 
 	port := os.Getenv("PORT")
 	if port == "" {
@@ -31,6 +37,22 @@ func main() {
 
 	log.Printf("Listening on port %s", port)
 	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%s", port), nil))
+}
+
+type Page struct {
+	Title string
+}
+
+func staticPageHandler() http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		if r.URL.Path != "/" {
+			http.Error(w, http.StatusText(http.StatusNotFound), http.StatusNotFound)
+			return
+		}
+		t, _ := template.ParseFiles("FaceCardsGroups.html")
+		p := &Page{Title: "Hello!"}
+		t.Execute(w, p)
+	}
 }
 
 func indexHandler(db *sql.DB) http.HandlerFunc {
@@ -63,7 +85,7 @@ func editHandler(w http.ResponseWriter, r *http.Request) {
 
 type User struct {
 	FirstName string
-	LastName string
+	LastName  string
 }
 
 func GetUsers(db *sql.DB) ([]*User, error) {
@@ -71,7 +93,7 @@ func GetUsers(db *sql.DB) ([]*User, error) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	defer rows.Close() 
+	defer rows.Close()
 
 	var users []*User
 	for rows.Next() {
