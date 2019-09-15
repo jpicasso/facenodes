@@ -11,11 +11,11 @@ import (
 )
 
 func main() {
-	// user := os.Getenv("CLOUD_SQL_USER")
-	// password := os.Getenv("CLOUD_SQL_PASSWORD")
-	// host := os.Getenv("CLOUD_SQL_DATABASE_HOST")
+	user := getEnv("CLOUD_SQL_USER", "postgres")
+	password := getEnv("CLOUD_SQL_PASSWORD", "")
+	host := getEnv("CLOUD_SQL_DATABASE_HOST", "localhost")
 
-	connStr := fmt.Sprintf("dbname=facenodesdb sslmode=disable")
+	connStr := fmt.Sprintf("dbname=facenodesdb sslmode=disable user=%s password=%s host=%s", user, password, host)
 	db, err := sql.Open("postgres", connStr)
 	if err != nil {
 		log.Fatal(err)
@@ -132,4 +132,11 @@ func GetGroups(db *sql.DB) ([]string, error) {
 		groups = append(groups, g)
 	}
 	return groups, nil
+}
+
+func getEnv(key, fallback string) string {
+	if value, ok := os.LookupEnv(key); ok {
+		return value
+	}
+	return fallback
 }
