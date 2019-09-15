@@ -15,19 +15,15 @@ func main() {
 	// password := os.Getenv("CLOUD_SQL_PASSWORD")
 	// host := os.Getenv("CLOUD_SQL_DATABASE_HOST")
 
-	/*
-		connStr := fmt.Sprintf("dbname=facenodesdb sslmode=disable")
-		db, err := sql.Open("postgres", connStr)
-		if err != nil {
-			log.Fatal(err)
-		}
-	*/
-
-	// http.HandleFunc("/edit", editHandler(db))
+	connStr := fmt.Sprintf("dbname=facenodesdb sslmode=disable")
+	db, err := sql.Open("postgres", connStr)
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	fs := http.StripPrefix("/static/", http.FileServer(http.Dir("static")))
 	http.Handle("/static/", fs)
-	http.HandleFunc("/", staticPageHandler())
+	http.HandleFunc("/", groupPageHandler(db))
 
 	port := os.Getenv("PORT")
 	if port == "" {
@@ -40,17 +36,23 @@ func main() {
 }
 
 type Page struct {
-	Title string
+	Title  string
+	Groups []string
 }
 
-func staticPageHandler() http.HandlerFunc {
+func groupPageHandler(db *sql.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		groups, err := GetGroups(db)
+		if err != nil {
+			log.Fatal(err)
+		}
+
 		if r.URL.Path != "/" {
 			http.Error(w, http.StatusText(http.StatusNotFound), http.StatusNotFound)
 			return
 		}
 		t, _ := template.ParseFiles("FaceCardsGroups.html")
-		p := &Page{Title: "Hello!"}
+		p := &Page{Title: "Hello!", Groups: groups}
 		t.Execute(w, p)
 	}
 }
@@ -112,4 +114,22 @@ func InsertUser(db *sql.DB, firstName, lastName string) error {
 		return err
 	}
 	return nil
+}
+
+func GetGroups(db *sql.DB) ([]string, error) {
+	rows, err := db.Query("SELECT name FROM groups")
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer rows.Close()
+
+	var groups []string
+	for rows.Next() {
+		var g string
+		if err := rows.Scan(&g); err != nil {
+			return nil, err
+		}
+		groups = append(groups, g)
+	}
+	return groups, nil
 }

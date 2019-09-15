@@ -44,8 +44,11 @@
 		<h3> View Groups </h3>
 		<table id='tableGroup'>
 			<tr>
-				<th colspan=3> Groups </th>
+				<th colspan=3> Groups</th>
 			</tr>
+			{{range .Groups}}
+			  <tr id=""> <td id="" class="span10">{{.}}</td></tr>
+			{{end}}
 		</table>
 		<table>
 			<tr id='trAdd'>
@@ -74,7 +77,6 @@
 
 	<script src="/static/js/jquery.js"></script>
 	<script src="/static/js/index.js"></script>
-	<script src="/static/js/faceNodes.js"></script>
 	<script src="/static/js/cssFunctions.js"></script>
 
 
