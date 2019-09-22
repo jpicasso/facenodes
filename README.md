@@ -1,5 +1,7 @@
 # Facenodes
 
+Last updated: 2019.09.22
+
 Facenodes is a service consisting of a:
 - Postgres database
 - Go server (connects to the database, accepts HTTP requests, serves static files)
