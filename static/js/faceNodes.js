@@ -184,6 +184,7 @@ $(document).ready(function () {
     function loadGroups() {
         //builds new group table based on whats in library_groups
         //assigns edit and delete buttons value based on group Id
+        console.log('test');
         for (i = 0; i < library_groups.length; i++) {
             $('#tableGroup').append("<tr id='tr" + i + "'> <td id='td" + i + "' class='span10'> " + library_groups[i] + "</td> <td class='span1'> <button value = '" + i + "'class='btn-edit'> </button> </td> <td class='span1'> <button value = '" + i + "' class='btn-delete'> </button> </td></tr>");
         }
