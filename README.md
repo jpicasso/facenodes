@@ -1,6 +1,6 @@
 # Facenodes
 
-Last updated: 2019.09.22C
+Last updated: 2019.09.30
 
 Facenodes is a service consisting of a:
 - Postgres database
