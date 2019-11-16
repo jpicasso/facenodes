@@ -100,11 +100,12 @@ migrate -source file:migrations -database postgres://postgres@abc:localhost:5431
 
 ## External Libraries
 At the moment, the Go server uses these libraries:
-- https://godoc.org/github.com/lib/pq
+- https://pkg.go.dev/github.com/lib/pq (Postgres driver)
 
 It also uses these libraries from the [Go Standard Library](https://golang.org/pkg/):
-- https://godoc.org/database/sql
-- https://godoc.org/net/http
-- https://godoc.org/os
-- https://godoc.org/fmt
-- https://godoc.org/log
+- https://pkg.go.dev/database/sql
+- https://pkg.go.dev/html/template
+- https://pkg.go.dev/net/http
+- https://pkg.go.dev/os
+- https://pkg.go.dev/fmt
+- https://pkg.go.dev/log
