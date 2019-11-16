@@ -3,14 +3,16 @@ package main
 import (
 	"database/sql"
 	"fmt"
-	_ "github.com/lib/pq"
 	"html/template"
 	"log"
 	"net/http"
 	"os"
+
+	_ "github.com/lib/pq"
 )
 
 func main() {
+	// this sets up the psql db connection and authentication
 	user := getEnv("CLOUD_SQL_USER", "postgres")
 	password := getEnv("CLOUD_SQL_PASSWORD", "")
 	host := getEnv("CLOUD_SQL_DATABASE_HOST", "localhost")
@@ -21,9 +23,14 @@ func main() {
 		log.Fatal(err)
 	}
 
-	fs := http.StripPrefix("/static/", http.FileServer(http.Dir("static")))
-	http.Handle("/static/", fs)
-	http.HandleFunc("/", groupPageHandler(db))
+	// this is the endpoint and the funciton that is executed when you go to that endpoint
+	fs := http.StripPrefix("/static/", http.FileServer(http.Dir("static"))) //this is the function
+	http.Handle("/static/", fs)                                             // fs funciton called here
+	// when you go to the home page it calls the groupPageHandler
+
+	http.HandleFunc("/groups", groupPageHandler(db))
+	http.HandleFunc("/FaceCards", FaceCardsHandler)
+	http.HandleFunc("/", indexHandler)
 
 	port := os.Getenv("PORT")
 	if port == "" {
@@ -40,6 +47,7 @@ type Page struct {
 	Groups []string
 }
 
+// when you go to the home page; takes a db as an argument
 func groupPageHandler(db *sql.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		groups, err := GetGroups(db)
@@ -47,26 +55,44 @@ func groupPageHandler(db *sql.DB) http.HandlerFunc {
 			log.Fatal(err)
 		}
 
-		if r.URL.Path != "/" {
-			http.Error(w, http.StatusText(http.StatusNotFound), http.StatusNotFound)
-			return
+		// this gets the html file
+		t, err := template.ParseFiles("FaceCardsGroups.html")
+		if err != nil {
+			log.Fatal(err)
 		}
-		t, _ := template.ParseFiles("FaceCardsGroups.html")
-		p := &Page{Title: "Hello!", Groups: groups}
+
+		// title is getting changed... and the groups is getting changed
+		p := &Page{Title: "Hello World!", Groups: groups}
+
+		//w = write this page back to the http response...p is what is being writtne
 		t.Execute(w, p)
 	}
 }
 
-func indexHandler(db *sql.DB) http.HandlerFunc {
-	return func(w http.ResponseWriter, r *http.Request) {
-		users, err := GetUsers(db)
-		if err != nil {
-			log.Fatal(err)
-		}
-		for _, u := range users {
-			fmt.Fprintf(w, "Hello, %s %s!", u.FirstName, u.LastName)
-		}
+// loads home page
+func indexHandler(w http.ResponseWriter, r *http.Request) {
+	if r.URL.Path != "/" {
+		http.Error(w, fmt.Sprintf("%q not found", r.URL.Path), http.StatusNotFound)
+		return
 	}
+
+	t, err := template.ParseFiles("index.html")
+	if err != nil {
+		log.Fatal(err)
+	}
+	p := &Page{Title: "FaceNodes!"}
+	//w = write this page back to the http response...p is what is being writtne
+	t.Execute(w, p)
+}
+
+func FaceCardsHandler(w http.ResponseWriter, r *http.Request) {
+	t, err := template.ParseFiles("FaceCards.html")
+	if err != nil {
+		log.Fatal(err)
+	}
+	p := &Page{Title: "FaceNodes!"}
+	//w = write this page back to the http response...p is what is being writtne
+	t.Execute(w, p)
 }
 
 /*
@@ -116,19 +142,29 @@ func InsertUser(db *sql.DB, firstName, lastName string) error {
 	return nil
 }
 
+// From the db database, get all the group names
 func GetGroups(db *sql.DB) ([]string, error) {
+
+	// this selects all groups and puts it in rows
 	rows, err := db.Query("SELECT name FROM groups")
+
+	// this means there was an error
 	if err != nil {
 		log.Fatal(err)
 	}
 	defer rows.Close()
 
+	// this initializes a type; this says the variable group which is an emtry list of strings
 	var groups []string
+
+	//this is just a loop
 	for rows.Next() {
+		//for each row in rows.Next set g eqaul to the content of row that is being returned
 		var g string
 		if err := rows.Scan(&g); err != nil {
 			return nil, err
 		}
+		// this creates a list
 		groups = append(groups, g)
 	}
 	return groups, nil
