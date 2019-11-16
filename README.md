@@ -81,7 +81,7 @@ Instructions for running migrations are at:
 The Postgres database is hosted in [Cloud SQL](https://console.cloud.google.com/sql/instances/facenodesdb/overview?project=facenodes). To connect to the Cloud SQL database, first run the cloud sql proxy:
 
 ```
-cloud_sql_proxy -instances=facenodes:us-central1:facenodesd=tcp:5431
+cloud_sql_proxy -instances=facenodes:us-central1:facenodesdb=tcp:5431
 ```
 
 In a separate window, you can access the database with:
