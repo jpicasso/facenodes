@@ -50,6 +50,14 @@ type Page struct {
 // when you go to the home page; takes a db as an argument
 func groupPageHandler(db *sql.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		if r.Method == "POST" {
+			groups, err := AddGroup(db)
+		} else if r.Method == "PUT" {
+			//
+		} else if r.Method == "DELETE" {
+			//
+		}
+
 		groups, err := GetGroups(db)
 		if err != nil {
 			log.Fatal(err)
@@ -66,7 +74,15 @@ func groupPageHandler(db *sql.DB) http.HandlerFunc {
 
 		//w = write this page back to the http response...p is what is being writtne
 		t.Execute(w, p)
+
+		http.Error(w, fmt.Sprintf("%q not found", r.URL.Path), http.StatusNotFound)
+		return
 	}
+}
+
+func AddGroup(db *sql.DB) {
+	db.Exec("INSERT INTO groups (name) VALUES ('test1')")
+
 }
 
 // loads home page
@@ -80,7 +96,7 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	p := &Page{Title: "FaceNodes!"}
+	p := &Page{Title: "This is FaceNodes!"}
 	//w = write this page back to the http response...p is what is being writtne
 	t.Execute(w, p)
 }

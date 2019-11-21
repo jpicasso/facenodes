@@ -50,7 +50,7 @@
 			<!-- this groups is getting changed from the main.go file ; range creates a for loop-->
 			{{range .Groups}}
 			  <tr id=""> <td id="" class="span10">{{.}}</td></tr>
-			  <td class='span2'> <button id='addGroup' class='btn-add'> </button> </td>
+			  <td class='span2'> <button id='addGroup' class='btn-add' method='POST' href="/groups"> </button> </td>
 			{{end}}
 		</table>
 		<!-- <table>

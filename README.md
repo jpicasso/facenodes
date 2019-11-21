@@ -98,7 +98,10 @@ To migrate the Cloud SQL database:
 migrate -source file:migrations -database postgres://postgres@abc:localhost:5431/facenodesdb?sslmode=disable up
 ```
 
-## External Libraries
+## Resources
+- (Writing Go Web Applications Tutorial)[https://golang.org/doc/articles/wiki/]
+
+### External Libraries
 At the moment, the Go server uses these libraries:
 - https://pkg.go.dev/github.com/lib/pq (Postgres driver)
 
