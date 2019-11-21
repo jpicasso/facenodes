@@ -71,6 +71,7 @@ The schema files are in `/migrations`. To migrate the schema to the latest file 
 ```
 migrate -source file:migrations -database postgres://localhost:5432/facenodesdb?sslmode=disable up
 ```
+This code will upload the migration folder that creates the SQL tables. Run this code when you create new tables or change the schema changes
 
 Instructions for running migrations are at:
 - https://github.com/golang-migrate/migrate#cli-usage
@@ -83,8 +84,9 @@ The Postgres database is hosted in [Cloud SQL](https://console.cloud.google.com/
 ```
 cloud_sql_proxy -instances=facenodes:us-central1:facenodesdb=tcp:5431
 ```
+This will create the connection to the GCP proxy. You need to use gcloud config list and gcloud auth login to authenticate your computer before running the above code.
 
-In a separate window, you can access the database with:
+In a separate window, you can access the database with the below code (in CLI press cmmd+shft+d to open new CLI window). This will give you authentication for the database once the proxy has already been authenticated.
 
 ```
 psql "postgres://<user>:<password>@<host>:<port>/<dbname>?sslmode=disable"
